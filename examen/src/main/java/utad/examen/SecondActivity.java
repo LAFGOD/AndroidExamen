@@ -6,5 +6,5 @@ package utad.examen;
 
 public class SecondActivity {
 
-    
+
 }
