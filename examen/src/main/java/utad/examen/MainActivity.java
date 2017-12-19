@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         registerFragment= (RegisterFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentRegister);
         MainActivityEvents mainActivityEvents=new MainActivityEvents(this);
 
-        
+
 
         //fireBaseAdmin=new FireBaseAdmin();
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
 
 
-        //DataHolder.instance.fireBaseAdmin.loginConEmailYPassword("test@test.com", "1234567890",this);
+        //DataHolder.instance.fireBaseAdmin.loginConEmailYPassword("test1@test1.com", "1234567890",this);
 
 
 
@@ -110,5 +110,10 @@ class MainActivityEvents implements LoginFragmentListener, RegisterFragmentListe
 
     }
 
+    @Override
+    public void fireBaseAdmin_RamaDescargada(String rama, DataSnapshot dataSnapshot) {
+
     }
+
+}
 
