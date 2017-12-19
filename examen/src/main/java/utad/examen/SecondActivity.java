@@ -12,11 +12,15 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import utad.examen.Adapters.ListaNoticiasAdapter;
+import utad.examen.Adapters.ListaNoticiasAdapterListener;
+import utad.examen.Adapters.NoticiaViewHolder;
 import utad.examen.FBObjects.FBNoticia;
 
 public class SecondActivity extends AppCompatActivity {
 
     ListaFragment listaNoticiasFragment;
+
+    ListaNoticiasAdapter listaNoticiasAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 }
 
-class SecondActivityEvents implements FireBaseAdminListener{
+class SecondActivityEvents implements FireBaseAdminListener, ListaNoticiasAdapterListener{
 
     public SecondActivity secondActivity;
 
@@ -51,9 +55,9 @@ class SecondActivityEvents implements FireBaseAdminListener{
         GenericTypeIndicator<ArrayList<FBNoticia>> indicator=new GenericTypeIndicator<ArrayList<FBNoticia>>(){};
         ArrayList<FBNoticia> noticias = dataSnapshot.getValue(indicator);
 
-        ListaNoticiasAdapter listaNoticiasAdapter=new ListaNoticiasAdapter(noticias, secondActivity);
-        secondActivity.listaNoticiasFragment.recyclerView.setAdapter(listaNoticiasAdapter);
-
+        secondActivity.listaNoticiasAdapter=new ListaNoticiasAdapter(noticias, secondActivity);
+        secondActivity.listaNoticiasFragment.recyclerView.setAdapter(secondActivity.listaNoticiasAdapter);
+        secondActivity.listaNoticiasAdapter.setListener(this);
 
     }
 
@@ -64,6 +68,11 @@ class SecondActivityEvents implements FireBaseAdminListener{
 
     @Override
     public void fireBaseAdmin_LoginOK(boolean blOK) {
+
+    }
+
+    @Override
+    public void ListaNoticiasAdapterCeldaClick(NoticiaViewHolder celdaHolder) {
 
     }
 }

@@ -24,6 +24,7 @@ public class ListaNoticiasAdapter extends RecyclerView.Adapter<NoticiaViewHolder
 
     public ArrayList<FBNoticia> noticias;
     public Context mContext;
+    public ListaNoticiasAdapterListener listener;
 
 
     public ListaNoticiasAdapter(ArrayList<FBNoticia> noticias, Context mContext){
@@ -31,6 +32,10 @@ public class ListaNoticiasAdapter extends RecyclerView.Adapter<NoticiaViewHolder
         this.mContext=mContext;
     }
 
+
+    public void setListener(ListaNoticiasAdapterListener listener){
+        this.listener=listener;
+    }
 
 
     @Override
@@ -46,6 +51,7 @@ public class ListaNoticiasAdapter extends RecyclerView.Adapter<NoticiaViewHolder
         //holder.textoMensaje.setText(coches.get(position).original);
         holder.tvtitulo.setText(noticias.get(position).Titulo);
         holder.tvcuerpo.setText(noticias.get(position).Cuerpo);
+        holder.setListener(this.listener);
 
         Glide.with(mContext).load(noticias.get(position).Img)
                 .into(holder.ivnoticia);
@@ -60,22 +66,5 @@ public class ListaNoticiasAdapter extends RecyclerView.Adapter<NoticiaViewHolder
 }
 
 
-class NoticiaViewHolder extends RecyclerView.ViewHolder{
-
-    public TextView tvtitulo;
-    public TextView tvcuerpo;
-    public ImageView ivnoticia;
 
 
-    public NoticiaViewHolder(View itemView) {
-        super(itemView);
-        tvtitulo=itemView.findViewById(R.id.tvtitulo);
-        tvcuerpo=itemView.findViewById(R.id.tvcuerpo);
-        ivnoticia=itemView.findViewById(R.id.ivnoticia);
-
-    }
-
-
-
-
-}
