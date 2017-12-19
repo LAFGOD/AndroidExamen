@@ -10,7 +10,8 @@ public class DataHolder {
 
     public FireBaseAdmin fireBaseAdmin;
 
-    public DataHolder(){
+    public DataHolder()
+    {
         fireBaseAdmin=new FireBaseAdmin();
     }
 }
