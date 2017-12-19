@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         registerFragment= (RegisterFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentRegister);
         MainActivityEvents mainActivityEvents=new MainActivityEvents(this);
 
+        
+
         //fireBaseAdmin=new FireBaseAdmin();
 
         loginFragment.setListener(mainActivityEvents);
