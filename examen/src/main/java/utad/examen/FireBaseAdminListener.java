@@ -5,4 +5,8 @@ package utad.examen;
  */
 
 public interface FireBaseAdminListener {
+
+    public void fireBaseAdmin_RegisterOK(boolean blOK);
+    public void fireBaseAdmin_LoginOK(boolean blOK);
+    //public void fireBaseAdmin_RamaDescargada(String rama, DataSnapshot dataSnapshot);
 }

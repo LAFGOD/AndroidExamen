@@ -10,6 +10,8 @@ import com.example.milib.LoginFragment;
 import com.example.milib.LoginFragmentListener;
 import com.example.milib.RegisterFragment;
 import com.example.milib.RegisterFragmentListener;
+import com.google.firebase.database.DataSnapshot;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
 
 
-        DataHolder.instance.fireBaseAdmin.loginConEmailYPassword("test@test.com", "1234567890",this);
+        //DataHolder.instance.fireBaseAdmin.loginConEmailYPassword("test@test.com", "1234567890",this);
 
 
 
@@ -88,27 +90,23 @@ class MainActivityEvents implements LoginFragmentListener, RegisterFragmentListe
     @Override
     public void fireBaseAdmin_RegisterOK(boolean blOK) {
         Log.v("MAINACTIVITYEVENTS","RESULTADO DE REGISTER "+blOK);
-        if (blOK){
+        /*if (blOK){
             Intent intent = new Intent(mainActivity,SecondActivity.class);
             mainActivity.startActivity(intent);
             mainActivity.finish();
-        }
+        }*/
     }
 
     @Override
     public void fireBaseAdmin_LoginOK(boolean blOK) {
         Log.v("MAINACTIVITYEVENTS","RESULTADO DE REGISTER "+blOK);
-        if (blOK){
+        /*if (blOK){
             Intent intent = new Intent(mainActivity,SecondActivity.class);
             mainActivity.startActivity(intent);
             mainActivity.finish();
-        }
+        }*/
 
     }
 
-    @Override
-    public void fireBaseAdmin_RamaDescargada(String rama, DataSnapshot dataSnapshot) {
-
-    }
     }
 
