@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
 
 
-        //DataHolder.instance.fireBaseAdmin.loginConEmailYPassword("test1@test1.com", "1234567890",this);
+//        /DataHolder.instance.fireBaseAdmin.loginConEmailYPassword("test1@test1.com", "1234567890",this);
 
 
 

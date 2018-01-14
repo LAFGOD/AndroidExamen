@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Androidxd</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
