@@ -26,7 +26,7 @@ public class SecondActivity extends AppCompatActivity {
 
     ListaFragment listaMensajesFragment, listaFragmentCoches;
     SupportMapFragment mapFragment;
-    ArrayList<FBCoche> coches;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +73,7 @@ class SecondActivityEvents implements FireBaseAdminListener, OnMapReadyCallback{
 
     public SecondActivity secondActivity;
     GoogleMap mMap;
+    ArrayList<FBCoche> coches;
 
     public SecondActivityEvents(SecondActivity secondActivity){
         this.secondActivity=secondActivity;
@@ -91,14 +92,27 @@ class SecondActivityEvents implements FireBaseAdminListener, OnMapReadyCallback{
 
         }else if (rama.equals("Coches")){
             GenericTypeIndicator<ArrayList<FBCoche>> indicator=new GenericTypeIndicator<ArrayList<FBCoche>>(){};
-            secondActivity.coches = dataSnapshot.getValue(indicator);
+            coches = dataSnapshot.getValue(indicator);
 
-            ListaCochesAdapter listaCochesAdapter=new ListaCochesAdapter(secondActivity.coches);
+            ListaCochesAdapter listaCochesAdapter=new ListaCochesAdapter(coches);
             secondActivity.listaFragmentCoches.recyclerView.setAdapter(listaCochesAdapter);
+            agregarPinesCoches();
+
 
         }
 
 
+    }
+
+    public void agregarPinesCoches(){
+        for (int i=0;i<coches.size();i++){
+            FBCoche cocheTemp=coches.get(i);
+            LatLng cochePos = new LatLng(cocheTemp.lat, cocheTemp.lon);
+            MarkerOptions markerOptions=new MarkerOptions();
+            markerOptions.position(cochePos);
+            markerOptions.title(cocheTemp.Nombre);
+            if (mMap!=null)mMap.addMarker(markerOptions);
+        }
     }
 
     @Override
@@ -116,9 +130,9 @@ class SecondActivityEvents implements FireBaseAdminListener, OnMapReadyCallback{
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //LatLng sydney = new LatLng(-34, 151);
+        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         DataHolder.instance.fireBaseAdmin.descargarYObservarRama("Coches");
 
