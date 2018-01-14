@@ -9,6 +9,7 @@ import com.example.azoth.androidxd.Adapters.ListaMensajesAdapter;
 import com.example.azoth.androidxd.FBObjects.FBCoche;
 import com.example.azoth.androidxd.FBObjects.Mensaje;
 import com.example.milib.ListaFragment;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.GenericTypeIndicator;
 
@@ -18,6 +19,7 @@ import java.util.Map;
 public class SecondActivity extends AppCompatActivity {
 
     ListaFragment listaMensajesFragment, listaFragmentCoches;
+    SupportMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +30,10 @@ public class SecondActivity extends AppCompatActivity {
         SecondActivityEvents events= new SecondActivityEvents(this);
         DataHolder.instance.fireBaseAdmin.setListener(events);
 
-        listaMensajesFragment=(ListaFragment)getSupportFragmentManager().findFragmentById(R.id.fragmentListaMensajes);
+        //listaMensajesFragment=(ListaFragment)getSupportFragmentManager().findFragmentById(R.id.fragmentListaMensajes);
         listaFragmentCoches=(ListaFragment)getSupportFragmentManager().findFragmentById(R.id.fragmentListaCoches);
+
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentMapa);
 
         DataHolder.instance.fireBaseAdmin.descargarYObservarRama("messages");
         DataHolder.instance.fireBaseAdmin.descargarYObservarRama("Coches");
@@ -61,11 +65,11 @@ class SecondActivityEvents implements FireBaseAdminListener{
 
         Log.v("SecondActivity",rama+"------------"+dataSnapshot);
         if (rama.equals("messages")){
-            GenericTypeIndicator<Map<String,Mensaje>> indicator=new GenericTypeIndicator<Map<String,Mensaje>>(){};
+            /*GenericTypeIndicator<Map<String,Mensaje>> indicator=new GenericTypeIndicator<Map<String,Mensaje>>(){};
             Map<String,Mensaje> msgs = dataSnapshot.getValue(indicator);
 
             ListaMensajesAdapter listaMensajesAdapter=new ListaMensajesAdapter(new ArrayList<Mensaje>(msgs.values()));
-            secondActivity.listaMensajesFragment.recyclerView.setAdapter(listaMensajesAdapter);
+            secondActivity.listaMensajesFragment.recyclerView.setAdapter(listaMensajesAdapter);*/
 
         }else if (rama.equals("Coches")){
             GenericTypeIndicator<ArrayList<FBCoche>> indicator=new GenericTypeIndicator<ArrayList<FBCoche>>(){};
