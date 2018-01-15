@@ -7,6 +7,7 @@ import android.util.Log;
 import com.example.azoth.androidxd.Adapters.ListaCochesAdapter;
 import com.example.azoth.androidxd.FBObjects.FBCoche;
 import com.example.milib.DetallesFragment;
+import com.example.milib.GPSAdmin.GPSTracker;
 import com.example.milib.ListaFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -50,6 +51,14 @@ public class SecondActivity extends AppCompatActivity {
         transaction.hide(detallesFragment);
         transaction.show(mapFragment);
         transaction.commit();
+
+        GPSTracker gpsTracker=new GPSTracker(this);
+        if (gpsTracker.canGetLocation()){
+
+        }
+        else {
+            gpsTracker.showSettingsAlert();
+        }
 
 
 
