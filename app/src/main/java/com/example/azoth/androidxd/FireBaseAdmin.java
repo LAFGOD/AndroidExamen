@@ -123,4 +123,14 @@ public class FireBaseAdmin {
         myRefRaiz.updateChildren(childUpdates);
     }
 
+    public void insertarEnMultiRamas(Map<String, Object> rutaRamasValores){
+
+        myRefRaiz.updateChildren(rutaRamasValores);
+    }
+
+    public String generarKeySobreRama(String sRutaRama){
+        return myRefRaiz.child(sRutaRama).push().getKey();
+
+    }
+
 }

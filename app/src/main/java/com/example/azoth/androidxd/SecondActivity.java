@@ -20,6 +20,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.GenericTypeIndicator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -55,7 +57,13 @@ public class SecondActivity extends AppCompatActivity {
         GPSTracker gpsTracker=new GPSTracker(this);
         if (gpsTracker.canGetLocation()){
             FBCoche fbCoche = new FBCoche(2017,"Coche Test","Renault",gpsTracker.getLatitude(),gpsTracker.getLongitude());
-            DataHolder.instance.fireBaseAdmin.insertarEnRama("/Coches/5",fbCoche.toMap());
+            //DataHolder.instance.fireBaseAdmin.insertarEnRama("/Coches/5",fbCoche.toMap());
+
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/Coches/5",fbCoche.toMap()); //PRIMER INSERT
+            String key=DataHolder.instance.fireBaseAdmin.generarKeySobreRama("/CochesConID/");
+            childUpdates.put("/CochesConID/" + key, fbCoche.toMap()); //SEGUNDO INSERT
+            DataHolder.instance.fireBaseAdmin.insertarEnMultiRamas(childUpdates);
         }
         else {
             gpsTracker.showSettingsAlert();
