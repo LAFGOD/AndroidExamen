@@ -3,11 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidExamen.iml" filepath="$PROJECT_DIR$/AndroidExamen.iml" />
+      <module fileurl="file://C:\Users\eduardo.lafoz\AndroidStudioProjects\AndroidExamen\AndroidExamen.iml" filepath="C:\Users\eduardo.lafoz\AndroidStudioProjects\AndroidExamen\AndroidExamen.iml" />
       <module fileurl="file://C:\Users\eduardo.lafoz\Downloads\Androidxd-master\Androidxd.iml" filepath="C:\Users\eduardo.lafoz\Downloads\Androidxd-master\Androidxd.iml" />
       <module fileurl="file://C:\Users\Azoth\StudioProjects\AndroidExamen\Androidxd-master.iml" filepath="C:\Users\Azoth\StudioProjects\AndroidExamen\Androidxd-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\eduardo.lafoz\AndroidStudioProjects\AndroidExamen\app\app.iml" filepath="C:\Users\eduardo.lafoz\AndroidStudioProjects\AndroidExamen\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/examen/examen.iml" filepath="$PROJECT_DIR$/examen/examen.iml" />
+      <module fileurl="file://C:\Users\eduardo.lafoz\AndroidStudioProjects\AndroidExamen\examen\examen.iml" filepath="C:\Users\eduardo.lafoz\AndroidStudioProjects\AndroidExamen\examen\examen.iml" />
       <module fileurl="file://$PROJECT_DIR$/milib/milib.iml" filepath="$PROJECT_DIR$/milib/milib.iml" />
+      <module fileurl="file://C:\Users\eduardo.lafoz\AndroidStudioProjects\AndroidExamen\milib\milib.iml" filepath="C:\Users\eduardo.lafoz\AndroidStudioProjects\AndroidExamen\milib\milib.iml" />
     </modules>
   </component>
 </project>

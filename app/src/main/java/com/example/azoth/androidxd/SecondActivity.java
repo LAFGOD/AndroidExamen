@@ -15,6 +15,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.GenericTypeIndicator;
@@ -50,26 +51,11 @@ public class SecondActivity extends AppCompatActivity {
 
 
 
-
-
-        //DataHolder.instance.fireBaseAdmin.descargarYObservarRama("messages");
-
-
-        /*ArrayList<String> mdatos= new ArrayList<>();
-        mdatos.add("MENSAJE 1");
-        mdatos.add("MENSAJE 2");
-        mdatos.add("MENSAJE 3");
-        mdatos.add("MENSAJE 4");
-
-        ListaMensajesAdapter listaMensajesAdapter= new ListaMensajesAdapter(mdatos);
-
-        listaMensajesFragment.recyclerView.setAdapter(listaMensajesAdapter);*/
-
     }
 }
 
 
-class SecondActivityEvents implements FireBaseAdminListener, OnMapReadyCallback{
+class SecondActivityEvents implements FireBaseAdminListener, OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
 
     public SecondActivity secondActivity;
     GoogleMap mMap;
@@ -111,7 +97,15 @@ class SecondActivityEvents implements FireBaseAdminListener, OnMapReadyCallback{
             MarkerOptions markerOptions=new MarkerOptions();
             markerOptions.position(cochePos);
             markerOptions.title(cocheTemp.Nombre);
-            if (mMap!=null)mMap.addMarker(markerOptions);
+            if (mMap!=null){
+                Marker marker=mMap.addMarker(markerOptions);
+                marker.setTag(cocheTemp);
+                cocheTemp.setMarker(marker);
+                if (i==0){
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cochePos,8));
+                }
+            }
+
         }
     }
 
@@ -128,6 +122,7 @@ class SecondActivityEvents implements FireBaseAdminListener, OnMapReadyCallback{
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setOnMarkerClickListener(this);
 
         // Add a marker in Sydney and move the camera
         //LatLng sydney = new LatLng(-34, 151);
@@ -136,5 +131,11 @@ class SecondActivityEvents implements FireBaseAdminListener, OnMapReadyCallback{
 
         DataHolder.instance.fireBaseAdmin.descargarYObservarRama("Coches");
 
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        FBCoche coche= (FBCoche)marker.getTag();
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.azoth.androidxd.FBObjects;
 
+import com.google.android.gms.maps.model.Marker;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 /**
@@ -14,6 +15,9 @@ public class FBCoche {
     public Double lat;
     public Double lon;
 
+    //FUERA DE FIREBASE XD
+    public Marker marker;
+
 
 
     public FBCoche(){
@@ -27,6 +31,14 @@ public class FBCoche {
         this.Nombre=Nombre;
         this.lat=lat;
         this.lon=lon;
+    }
+
+    public void setMarker(Marker marker){
+        this.marker=marker;
+    }
+
+    public Marker getMarker(){
+        return marker;
     }
 
 
