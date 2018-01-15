@@ -1,14 +1,12 @@
 package com.example.azoth.androidxd;
 
-import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.azoth.androidxd.Adapters.ListaCochesAdapter;
-import com.example.azoth.androidxd.Adapters.ListaMensajesAdapter;
 import com.example.azoth.androidxd.FBObjects.FBCoche;
-import com.example.azoth.androidxd.FBObjects.Mensaje;
+import com.example.milib.DetallesFragment;
 import com.example.milib.ListaFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,12 +19,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.GenericTypeIndicator;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class SecondActivity extends AppCompatActivity {
 
     ListaFragment listaMensajesFragment, listaFragmentCoches;
     SupportMapFragment mapFragment;
+    DetallesFragment detallesFragment;
+
 
 
     @Override
@@ -44,8 +43,11 @@ public class SecondActivity extends AppCompatActivity {
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentMapa);
         mapFragment.getMapAsync(events);
 
+        detallesFragment=(DetallesFragment) getSupportFragmentManager().findFragmentById(R.id.detallesFragment);
+
         android.support.v4.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
         transaction.hide(listaFragmentCoches);
+        transaction.hide(detallesFragment);
         transaction.show(mapFragment);
         transaction.commit();
 
@@ -77,6 +79,7 @@ class SecondActivityEvents implements FireBaseAdminListener, OnMapReadyCallback,
             secondActivity.listaMensajesFragment.recyclerView.setAdapter(listaMensajesAdapter);*/
 
         }else if (rama.equals("Coches")){
+            quitarViejosPines();
             GenericTypeIndicator<ArrayList<FBCoche>> indicator=new GenericTypeIndicator<ArrayList<FBCoche>>(){};
             coches = dataSnapshot.getValue(indicator);
 
@@ -109,6 +112,18 @@ class SecondActivityEvents implements FireBaseAdminListener, OnMapReadyCallback,
         }
     }
 
+
+    public void quitarViejosPines(){
+        if (coches!=null){
+            for (int i=0;i<coches.size();i++){
+                FBCoche cocheTemp=coches.get(i);
+                if (cocheTemp.getMarker()!=null){
+                    cocheTemp.getMarker().remove();
+                }
+            }
+        }
+    }
+
     @Override
     public void fireBaseAdmin_RegisterOK(boolean blOK) {
 
@@ -136,6 +151,18 @@ class SecondActivityEvents implements FireBaseAdminListener, OnMapReadyCallback,
     @Override
     public boolean onMarkerClick(Marker marker) {
         FBCoche coche= (FBCoche)marker.getTag();
+
+        secondActivity.detallesFragment.txtNom.setText(coche.Nombre);
+        secondActivity.detallesFragment.txtMar.setText(coche.Marca);
+        secondActivity.detallesFragment.txtFab.setText(coche.Fabricado+"");
+
+
+        android.support.v4.app.FragmentTransaction transaction= secondActivity.getSupportFragmentManager().beginTransaction();
+        //transaction.hide(secondActivity.listaFragmentCoches);
+        transaction.show(secondActivity.detallesFragment);
+        //transaction.hide(secondActivity.mapFragment);
+        transaction.commit();
+
         return false;
     }
 }

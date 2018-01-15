@@ -6,13 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.example.azoth.androidxd.SecondActivity">
 
+
+
     <fragment
         android:id="@+id/fragmentMapa"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <fragment
         android:id="@+id/fragmentListaCoches"
@@ -27,4 +31,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <fragment
+        android:id="@+id/detallesFragment"
+        android:name="com.example.milib.DetallesFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentMapa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMapa"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
