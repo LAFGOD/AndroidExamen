@@ -9,6 +9,7 @@ import com.example.azoth.androidxd.FBObjects.FBCoche;
 import com.example.milib.DetallesFragment;
 import com.example.milib.GPSAdmin.GPSTracker;
 import com.example.milib.ListaFragment;
+import com.example.milib.asyntasks.HttpAsyncTask;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -69,7 +70,8 @@ public class SecondActivity extends AppCompatActivity {
             gpsTracker.showSettingsAlert();
         }
 
-
+        HttpAsyncTask httpAsyncTask=new HttpAsyncTask();
+        httpAsyncTask.execute("http://www.google.com");
 
     }
 }
