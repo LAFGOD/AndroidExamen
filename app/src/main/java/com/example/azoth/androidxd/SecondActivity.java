@@ -71,7 +71,7 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         HttpAsyncTask httpAsyncTask=new HttpAsyncTask();
-        httpAsyncTask.execute("http://www.google.com");
+        httpAsyncTask.execute("http://www.worldbestlearningcenter.com/tips/img-files/android_stop_asynctask.jpg");
 
     }
 }
