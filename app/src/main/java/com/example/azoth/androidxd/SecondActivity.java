@@ -75,7 +75,9 @@ public class SecondActivity extends AppCompatActivity {
         httpAsyncTask.execute("http://www.worldbestlearningcenter.com/tips/img-files/android_stop_asynctask.jpg");*/
 
         HttpJsonAsyncTask httpJsonAsyncTask=new HttpJsonAsyncTask();
-        httpJsonAsyncTask.execute();
+        String url = String.format("http://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&units=%s&appid=%s",40.4165,-3.52256,"metric","a37ce897b2c637531a86e89b71f6efa1" +
+                "");
+        httpJsonAsyncTask.execute(url);
 
     }
 }
