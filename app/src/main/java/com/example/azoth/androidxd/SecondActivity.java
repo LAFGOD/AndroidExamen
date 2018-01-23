@@ -79,6 +79,10 @@ public class SecondActivity extends AppCompatActivity {
                 "");
         httpJsonAsyncTask.execute(url);
 
+        HttpJsonAsyncTask httpJsonAsyncTask2=new HttpJsonAsyncTask();
+        String url2 = String.format("http://10.0.2.2/EDU/xdhaha/login.php");
+        httpJsonAsyncTask.execute(url2);
+
     }
 }
 
