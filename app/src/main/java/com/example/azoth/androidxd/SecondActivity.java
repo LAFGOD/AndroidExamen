@@ -10,6 +10,7 @@ import com.example.milib.DetallesFragment;
 import com.example.milib.GPSAdmin.GPSTracker;
 import com.example.milib.ListaFragment;
 import com.example.milib.asyntasks.HttpAsyncTask;
+import com.example.milib.asyntasks.HttpJsonAsyncTask;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -70,8 +71,11 @@ public class SecondActivity extends AppCompatActivity {
             gpsTracker.showSettingsAlert();
         }
 
-        HttpAsyncTask httpAsyncTask=new HttpAsyncTask();
-        httpAsyncTask.execute("http://www.worldbestlearningcenter.com/tips/img-files/android_stop_asynctask.jpg");
+        /*HttpAsyncTask httpAsyncTask=new HttpAsyncTask();
+        httpAsyncTask.execute("http://www.worldbestlearningcenter.com/tips/img-files/android_stop_asynctask.jpg");*/
+
+        HttpJsonAsyncTask httpJsonAsyncTask=new HttpJsonAsyncTask();
+        httpJsonAsyncTask.execute();
 
     }
 }
