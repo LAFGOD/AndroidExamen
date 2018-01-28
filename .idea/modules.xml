@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidExamenhaha.iml" filepath="$PROJECT_DIR$/AndroidExamenhaha.iml" />
+      <module fileurl="file://C:\Users\Azoth\StudioProjects\AndroidExamenyoyoxdxd\AndroidExamenhaha.iml" filepath="C:\Users\Azoth\StudioProjects\AndroidExamenyoyoxdxd\AndroidExamenhaha.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidExamenyoyoxdxd.iml" filepath="$PROJECT_DIR$/AndroidExamenyoyoxdxd.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Azoth\StudioProjects\AndroidExamenyoyoxdxd\app\app.iml" filepath="C:\Users\Azoth\StudioProjects\AndroidExamenyoyoxdxd\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app2/app2.iml" filepath="$PROJECT_DIR$/app2/app2.iml" />
+      <module fileurl="file://C:\Users\Azoth\StudioProjects\AndroidExamenyoyoxdxd\app2\app2.iml" filepath="C:\Users\Azoth\StudioProjects\AndroidExamenyoyoxdxd\app2\app2.iml" />
       <module fileurl="file://$PROJECT_DIR$/milib/milib.iml" filepath="$PROJECT_DIR$/milib/milib.iml" />
+      <module fileurl="file://C:\Users\Azoth\StudioProjects\AndroidExamenyoyoxdxd\milib\milib.iml" filepath="C:\Users\Azoth\StudioProjects\AndroidExamenyoyoxdxd\milib\milib.iml" />
     </modules>
   </component>
 </project>
