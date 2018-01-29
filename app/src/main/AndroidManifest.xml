@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".SecondActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -44,8 +44,10 @@
             android:authorities="com.facebook.app.FacebookContentProvider1234"
             android:exported="true" />
 
-        
         <activity android:name=".FaceBActivity">
+
+        </activity>
+        <activity android:name=".TwitterLActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
