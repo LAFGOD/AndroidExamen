@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.azoth.androidxd.sqliteadmin.Contact;
+import com.example.azoth.androidxd.sqliteadmin.DatabaseHandler;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Result;
@@ -41,7 +43,11 @@ public class TwitterLActivity extends AppCompatActivity {
             }
         });
 
-
+        DatabaseHandler databaseHandler= new DatabaseHandler(this);
+        Contact contact=new Contact(3,"Yony333","692428756");
+        databaseHandler.addContact(contact);
+        //Contact contact1 = databaseHandler.getContact(4);
+        Log.v("DDBB","--------------------->>>>>>>>>>>>>>>" + databaseHandler.getAllContacts());
         /*TwitterConfig config = new TwitterConfig.Builder(this)
                 .logger(new DefaultLogger(Log.DEBUG))
                 .twitterAuthConfig(new TwitterAuthConfig("2Z9GhzCdPv8gYreqEQ5TDZDIn", "hOpkr8LfOThAB4Ml6LYfKKiKFEGi0DyAiVBdBenmapYhDR1rK3"))
