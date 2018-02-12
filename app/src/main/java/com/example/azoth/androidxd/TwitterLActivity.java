@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.example.azoth.androidxd.sqliteadmin.Contact;
 import com.example.azoth.androidxd.sqliteadmin.DatabaseHandler;
+import com.google.firebase.crash.FirebaseCrash;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Result;
@@ -34,19 +35,24 @@ public class TwitterLActivity extends AppCompatActivity {
             public void success(Result<TwitterSession> result) {
                 // Do something with result, which provides a TwitterSession for making API calls
                 Log.v("TwitterLActivity","ME HE LOGEADO");
+                FirebaseCrash.log("Error 2 LOGEADO XD");
             }
 
             @Override
             public void failure(TwitterException exception) {
                 // Do something on failure
                 Log.v("TwitterLActivity","ERROR");
+                FirebaseCrash.log("Error 3 ERROR LOG XD");
             }
         });
 
         DatabaseHandler databaseHandler= new DatabaseHandler(this);
+        FirebaseCrash.log("Error 5 tengo sueño");
         Contact contact=new Contact(3,"Yony333","692428756");
         databaseHandler.addContact(contact);
         //Contact contact1 = databaseHandler.getContact(4);
+        FirebaseCrash.report(new Exception("My first Android non-fatal error"));
+        FirebaseCrash.log("Error 1");
         Log.v("DDBB","--------------------->>>>>>>>>>>>>>>" + databaseHandler.getAllContacts());
         /*TwitterConfig config = new TwitterConfig.Builder(this)
                 .logger(new DefaultLogger(Log.DEBUG))
@@ -63,5 +69,6 @@ public class TwitterLActivity extends AppCompatActivity {
 
         // Pass the activity result to the login button.
         loginButton.onActivityResult(requestCode, resultCode, data);
+        FirebaseCrash.log("Error 4 XDDDDDDDDD");
     }
 }
